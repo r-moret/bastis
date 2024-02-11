@@ -1,17 +1,25 @@
-from datetime import date
-from datetime import time
+from __future__ import annotations
+
+from datetime import date, time
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from domain.animal.animal import Animal
 
 
 class VetAppointment:
     def __init__(
         self,
         date: date,
+        animal: Animal,
         description: str | None = None,
         time_slot: tuple[time, time] | None = None,
     ) -> None:
         self.date = date
         self.description = description
         self.time_slot = time_slot
+
+        self.animal = animal
 
     @property
     def time_slot(self) -> tuple[time, time] | None:

@@ -1,10 +1,17 @@
+from __future__ import annotations
+
 from datetime import date
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from domain.animal.animal import Animal
 
 
 class Treatment:
     def __init__(
         self,
         medication: str,
+        animal: Animal,
         zone: str | None = None,
         start_date: date | None = None,
         end_date: date | None = None,
@@ -17,6 +24,8 @@ class Treatment:
         self._start_date = start_date
         self._end_date = end_date
         self.periodicity = periodicity
+
+        self.animal = animal
 
     @property
     def start_date(self) -> date | None:
